@@ -219,7 +219,7 @@ export default {
           customRemoteConfigArray = customRemoteConfigArray.concat(customRemoteConfigObject)
         }
       }catch(e){
-        console.log("parse error",customRemoteConfig,e)
+        
       }
     }
     
