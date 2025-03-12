@@ -219,7 +219,9 @@ export default {
           customRemoteConfigArray = customRemoteConfigArray.concat(customRemoteConfigObject)
         }
       }catch(e){
-        
+        // eslint no-empty
+        // eslint no-console
+        customRemoteConfigArray = []
       }
     }
     
