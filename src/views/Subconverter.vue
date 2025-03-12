@@ -203,10 +203,26 @@ const defaultBackend = process.env.VUE_APP_SUBCONVERTER_DEFAULT_BACKEND + '/sub?
 const shortUrlBackend = process.env.VUE_APP_MYURLS_API
 const configUploadBackend = process.env.VUE_APP_CONFIG_UPLOAD_API
 const tgBotLink = process.env.VUE_APP_BOT_LINK
+const customRemoteConfig = process.env.VUE_APP_CUSTOM_REMOTE_CONFIG
 
 export default {
   data() {
     const backendOptionsArray = [{ value: defaultBackend.startsWith('http') ? defaultBackend : "http://127.0.0.1:25500/sub?" }]
+    let customRemoteConfigArray = []
+    if (customRemoteConfig){
+      try{
+        const customRemoteConfigObject = JSON.parse(customRemoteConfig)
+        if (customRemoteConfigObject 
+            && customRemoteConfigObject.label 
+            && customRemoteConfigObject.options 
+            && customRemoteConfigObject.options.length > 0){
+          customRemoteConfigArray = customRemoteConfigArray.concat(customRemoteConfigObject)
+        }
+      }catch(e){
+        console.log("parse error",customRemoteConfig,e)
+      }
+    }
+    
     return {
       backendVersion: "",
       advanced: "2",
@@ -288,7 +304,7 @@ export default {
                 value:
                   "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/remote-config/customized/ssrcloud.ini"
               }
-            ]
+            ].concat(customRemoteConfigArray)
           },
           {
             label: "Special",
