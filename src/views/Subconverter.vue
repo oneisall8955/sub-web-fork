@@ -206,6 +206,7 @@ const tgBotLink = process.env.VUE_APP_BOT_LINK
 
 export default {
   data() {
+    const backendOptionsArray = [{ value: defaultBackend.startsWith('http') ? defaultBackend : "http://127.0.0.1:25500/sub?" }]
     return {
       backendVersion: "",
       advanced: "2",
@@ -232,7 +233,7 @@ export default {
           Trojan: "trojan",
           Surge3: "surge&ver=3",
         },
-        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" }],
+        backendOptions: backendOptionsArray,
         remoteConfig: [
           {
             label: "universal",
