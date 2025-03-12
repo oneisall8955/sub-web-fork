@@ -306,7 +306,7 @@ export default {
                 value:
                   "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/remote-config/customized/ssrcloud.ini"
               }
-            ].concat(customRemoteConfigArray)
+            ]
           },
           {
             label: "Special",
@@ -323,7 +323,7 @@ export default {
               }
             ]
           }
-        ]
+        ].concat(customRemoteConfigArray)
       },
       form: {
         sourceSubUrl: "",
